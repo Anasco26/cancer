@@ -7,7 +7,7 @@ title = Breast Cancer
 package.name = breastCancer
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.cancer
+package.domain = org.test
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,Kivy==2.2.0.dev0,kivymd==1.1.1,pillow
+requirements = python3,Kivy==2.2.0,kivymd==1.1.1,pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
