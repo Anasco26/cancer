@@ -1,0 +1,104 @@
+<Result>
+    name: "result"
+    on_pre_enter: 
+        root.on_start()
+        
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            size_hint_y: .1
+            spacing: "20dp"
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {'center_x': .1}
+                theme_icon_color: "Custom"
+                icon_color: .95, .4, .9, 1
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "dashboard"
+            MDLabel:
+                text: "Your Result"
+                font_style: "H6"
+        
+        MDBoxLayout:
+            size_hint: .9, .8
+            pos_hint: {"center_x": .5}
+            orientation: "vertical"
+            # md_bg_color: 1, 1, 0, 1
+            
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: .4
+                spacing: "5dp"
+                padding: "5dp"
+                MDLabel:
+                    size_hint_y: .1
+                    text: "Symptoms:"
+                    font_size: "15sp"
+                    bold: True
+                    
+                MDLabel:
+                    text : root.test_result
+                    pos_hint: {"center_y": 1}
+                    size_hint_y: .9
+                    font_size: "12sp"
+                    halign: "justify"
+                        
+
+
+            MDBoxLayout:
+                orientation: "vertical"
+
+                MDLabel: 
+                    text: "Diagnose Explanation/Evaluation"
+                    size_hint_y: .15
+                    font_size: "15sp"
+                    bold: True
+                    
+                ScrollView:
+                    bar_width: 0
+                    # size_hint_y: .9
+                    # pos_hint: {"center_y": .5}
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        adaptive_height: True
+                        padding: '10dp'
+                        spacing: '10dp'
+                        id: container
+                        
+                MDBoxLayout:
+                    size_hint_y: .15
+                    MDLabel:
+                        text: root.comment
+                        bold: True
+                        font_size: "12sp"
+
+        MDBoxLayout: 
+            size_hint_y: .07
+            md_bg_color: 0, 0, .7, 1
+
+            MDIconButton:
+                size_hint_x: .25
+                icon: "content-save"
+                pos_hint: {'center_x': .1}
+                theme_icon_color: "Custom"
+                icon_color: .95, .4, .9, 1
+                on_release:
+                    root.open_dialog()
+            MDIconButton:
+                size_hint_x: .25
+                icon: "download"
+                pos_hint: {'center_x': .5}
+                theme_icon_color: "Custom"
+                icon_color: .95, .4, .9, 1
+                on_release:
+                    root.save_result()
+            MDIconButton:
+                size_hint_x: .25
+                icon: "share-variant"
+                pos_hint: {'center_x': 1}
+                theme_icon_color: "Custom"
+                icon_color: .95, .4, .9, 1
+                on_release:
+                    root.save_result()

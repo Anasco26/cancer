@@ -1,0 +1,154 @@
+<RegistrationPage>
+    name: "regpage"
+
+    BoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 1, 1, 1, 1
+        # spacing: '10dp'
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_x': .1}
+            theme_icon_color: "Custom"
+            icon_color: 1, .5, 1, 1
+            # md_bg_color: 1, 0, 0, 1
+            size_hint_y: .1
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "HomePage"
+
+        MDLabel:
+            text: "Registration Page"
+            color: rgba(0, 0, 0, 255)
+            font_size: "20sp"
+            size_hint_x: .85
+            pos_hint: {'center_x': .5}
+            font_name: app.latoBold
+            size_hint_y: .05
+               
+        MDBoxLayout:
+            size_hint: 1, .83
+            id: form
+            adaptive_height: True
+            orientation: 'vertical'
+            padding: "20dp"
+            spacing: "20dp"
+
+            MDLabel:
+                text: "Create an account to get tested"
+                color: rgba(0, 0, 0, 150)
+                font_size: "14sp"
+                pos_hint: {'center_x': .5}
+                font_name: app.latoRegular
+                size_hint_y:.02
+
+            MDTextField:
+                hint_text: "Enter your Full Name"
+                id: full_name
+                font_name: app.latoRegular
+                font_size: "12sp"
+                icon_left: "account"
+                helper_text: "Enter your full name"
+                helper_text_mode: "on_error"
+                mode: "rectangle"
+                pos_hint: {"center_x": .5}
+                on_text: root.filter_text_input(self)
+                on_text_validate:
+                    self.required = True
+                on_focus:
+                    self.required = True 
+                
+            MDTextField:
+                hint_text: "Enter your Email"
+                id: email
+                font_name: app.latoRegular
+                font_size: "12sp"
+                icon_left: "email"
+                mode: "rectangle"
+                pos_hint: {"center_x": .5}
+                helper_text: "Enter valid email"
+                helper_text_mode: "on_error"
+                on_text_validate:
+                    self.required = True
+                on_focus:
+                    self.required = True 
+                    self.validator = "email"
+
+            MDTextField:
+                id: password
+                hint_text: "Enter your password"
+                font_name: app.latoRegular
+                font_size: "12sp"
+                icon_left: "key-variant"
+                mode: "rectangle"
+                helper_text: "Please enter password"
+                helper_text_mode: "on_error"
+                password: True
+                on_text_validate:
+                    self.required = True
+                on_focus:
+                    self.required = True 
+                
+            MDTextField:
+                hint_text: "Date of Birth"
+                id: dob
+                font_name: app.latoRegular
+                font_size: "12sp"
+                icon_left: "calendar"
+                mode: "rectangle"
+                pos_hint: {"center_x": .5}
+                helper_text: "Select date of birth"
+                helper_text_mode: "on_error"
+                date_format: "dd/mm/yyyy"
+                on_text_validate:
+                    self.required = True
+                on_focus:
+                    if self.focus: root.open_date_picker()
+                    self.required = True 
+                    self.validator = "date"
+            
+            MDTextField:
+                id: phone
+                font_name: app.latoRegular
+                font_size: "12sp"
+                icon_left: "phone"
+                mode: "rectangle"
+                pos_hint: {"center_x": .5}
+                hint_text: "Phone Number"
+                helper_text: "Please enter valid phone number"
+                helper_text_mode: "on_error"
+                input_filter: "int"
+                # max_text_length: 16    
+                on_text_validate:
+                    root.format_phone_number(self)
+                    self.required = True
+                    self.max_text_length = 16
+                    root.min_text_input(self, 16)
+                on_focus:
+                    root.min_text_input(self, 16)
+                    self.max_text_length = 16
+                    if not self.focus: root.format_phone_number(self)
+                    self.required = True
+
+            MDRaisedButton:
+                size_hint_x: 1
+                text: "Register"
+                # line_color: rgba(51, 0, 255, 255)
+                # theme_text_color: "Custom"
+                # text_color: 1, 0, .7, 1
+                radius: [3, ]
+                pos_hint: {'center_x': .5}
+                on_release:
+                    root.register()
+
+            MDTextButton:
+                text: "Already a user, Login"
+                color: 0, 0, 1, 1
+                pos_hint: {"center_x": .5, "center_y": .6}
+                halign: "center"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "Login"
+
+        Widget:
+            size_hint_y: .02
+

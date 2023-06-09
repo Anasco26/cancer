@@ -1,0 +1,168 @@
+<HomePage>
+    name: "HomePage"
+    on_pre_enter: 
+        root.on_start()
+    MDBoxLayout:
+        md_bg_color: 1, 1, 1, 1
+        orientation: 'vertical'
+        size_hint: 1, 1
+
+        MDBoxLayout:
+            spacing: "10dp"
+            size_hint: .9, .1
+            pos_hint: {"center_x": .5}
+            Image:
+                source: "assets/images/favicon.ico"
+                size_hint: .1, 1
+            MDLabel:
+                text: "Breast Cancer Information System"
+                color: .95, .4, .9, 1
+                size_hint: .9, 1
+
+        MDFloatLayout:
+            size_hint: 1, .9
+
+            Image:
+                source: "assets/images/cover.jpeg"
+                pos_hint: {"center_x": .5, "center_y": .75}
+                size_hint: None, None
+                size: 400, 300
+
+            ScrollView:
+                bar_width: 0
+                pos_hint: {'center_y': 0.5}
+                # size_hint: 1, 1
+                effect_cls: 'ScrollEffect'
+                # do_scroll_x: False
+
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_height: True
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        md_bg_color: 0, 0, 0, .5
+                        size_hint: 1, None
+                        height: 250
+
+                        MDLabel:
+                            text: "INFORMATION SYSTEM ON BREAST CANCER DIAGNOSES"
+                            font_name: app.latoBlack
+                            color: rgba(255, 255, 255, 255)
+                            font_size: "26sp"
+                            halign: "center"
+                            size_hint: .85, .6
+                            pos_hint: {'center_x': .5}
+
+                        MDLabel:
+                            text: "Get texted today, fast and reliable way to know your status is to use our system."
+                            color: rgba(255, 255, 255, 255)
+                            font_size: "14sp"
+                            size_hint: .85, .2
+                            pos_hint: {'center_x': .5}
+                            font_name: app.latoRegular
+                            halign: "center"
+
+                        MDBoxLayout:
+                            spacing: 5
+                            padding: 5
+                            pos_hint: {"center_x": .5}
+                            size_hint: .5, .2
+
+                            MDRaisedButton:
+                                text: "Sign In"
+                                radius: [3, ]
+                                on_release:
+                                    root.manager.transition.direction = "left"
+                                    root.manager.current = "Login"
+                                md_bg_color: .2, 0, .85, 1
+
+                            MDRectangleFlatButton:
+                                text: "Sign Up"
+                                radius: [3, ]
+                                on_release:
+                                    root.manager.transition.direction = "left"
+                                    root.manager.current = "regpage"
+                                line_color: rgba(51, 0, 255, 255)
+                                theme_text_color: "Custom"
+                                text_color: 1, 1, 1, 1
+
+                    MDBoxLayout:
+                        size_hint: 1, None
+                        height: 350
+                        orientation: "vertical"
+                        # adaptive_height: True
+                        padding: "20pd"
+                        spacing: "20dp"
+                        padding: "10dp"
+                        md_bg_color: 1, 1, 1, 1
+                        MDLabel:
+                            text: "ABOUT THE SYSTEM"
+                            font_style: "H6"
+                            # valign: "center"
+                            color: 0, 0, .8, 1
+                            size_hint_y: .05
+                        MDLabel: 
+                            text: "Breast Cancer Information System"
+                            bold: True
+                            font_size: "30sp"
+                            size_hint_y: .35
+                        MDBoxLayout:
+                            # padding: "10dp"
+                            spacing: "10dp"
+                            orientation: "vertical"
+
+                            MDLabel:
+                                text: "This system (Information System on Brest Cancer Diagnoses), Provide it user with a first hand information on Brest Cancer Diagnoses. Once login you can easily know your status on brest cancer by answering some few questions as provided by the system."
+                                color: .5, .5, .5, 1
+                                halign: "justify"
+                            MDLabel:
+                                text: "The system is design as a final year project, within a time frame and therefore is still open for additional fetures."
+                                color: .5, .5, .5, 1
+                                halign: "justify"
+                    # MDBoxLayout:
+                    #     size_hint: 1, None
+                    #     height: 600
+                    #     md_bg_color: 1,1,1, 1
+                    #     spacing: '10dp'
+                    #     padding: "20dp"
+                    #     orientation:"vertical"
+                    #     MDCard:
+                    #         orientation:"vertical"
+                    #         # size_hint:(None, None)
+                    #         # size: ("280dp", "320dp")
+                    #         pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    #         MDSmartTile:
+                    #             source:"assets/images/doctors/doctor1.jpeg"
+                    #             MDLabel:
+                    #                 text: "Doctor Name"
+                    #         MDLabel: 
+                    #             text: "email"
+                    #             size_hint_y: .1
+                    #             font_size: "12sp"
+                    #         MDLabel:
+                    #             text: "Phone"
+                    #             size_hint_y: .1
+                    #             font_size: "10sp"
+                    
+                    MDBoxLayout:
+                        size_hint: 1, None
+                        height: 40
+                        md_bg_color: .95, .4, .9, 1
+                        padding: "20dp"
+                        
+                        MDLabel: 
+                            text: "Design by:"
+                            bold: True
+                            color: "white"
+                            font_size: "12sp"
+                            bold: True
+                            # valign: "center"
+                            size_hint_x: .3
+                        MDLabel:
+                            text: "Bosede Precious Suberu (CST20HND0050)"
+                            bold: True
+                            color: "white"
+                            size_hint_x: .7
+                            font_size: "12sp"
+                            bold: True

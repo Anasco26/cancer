@@ -1,0 +1,128 @@
+<LoginPage>
+    name: "Login"
+    BoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 1, 1, 1, 1
+        spacing: '10dp'
+        MDIconButton:
+            icon: "arrow-left"
+            pos_hint: {'center_x': .1}
+            theme_icon_color: "Custom"
+            icon_color: 1, .5, 1, 1
+            # md_bg_color: 1, 0, 0, 1
+            size_hint_y: .1
+            on_release:
+                root.manager.transition.direction = "right"
+                root.manager.current = "HomePage"
+        MDLabel:
+            text: "Welcome back"
+            color: rgba(0, 0, 0, 255)
+            font_size: "20sp"
+            size_hint_x: .85
+            pos_hint: {'center_x': .5}
+            font_name: app.latoBold
+            size_hint_y: .06
+        MDLabel:
+            text: "Please log in with the optin you originally signed up with"
+            color: rgba(0, 0, 0, 150)
+            font_size: "14sp"
+            size_hint_x: .85
+            pos_hint: {'center_x': .5}
+            font_name: app.latoRegular
+            size_hint_y: .06
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: .85, .17
+            pos_hint: {'center_x': .5}
+            MDLabel:
+                text: "Email"
+                font_name: app.latoBold
+                font_size: "16sp"
+            MDRelativeLayout:
+                size_hint_y: None
+                height: text_field.height
+
+                MDTextField:
+                    id: text_field
+                    hint_text: "Enter your email"
+                    font_name: app.latoRegular
+                    font_size: "12sp"
+                    icon_left: "email"
+                    mode: "fill"
+                    helper_text: "Fill in valid email"
+                    helper_text_mode: "on_error"
+                    on_text_validate:
+                        self.validator = "email"
+                        self.required = True
+                    on_focus:
+                        self.validator = "email"
+                        self.required = True
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: .85, .15
+            pos_hint: {'center_x': .5}
+            MDLabel:
+                text: "Password"
+                font_name: app.latoBold
+                font_size: "16sp"
+            MDRelativeLayout:
+                size_hint_y: None
+                height: text_field.height
+
+                MDTextField:
+                    id: password_field
+                    hint_text: "Enter your password"
+                    font_name: app.latoRegular
+                    font_size: "12sp"
+                    icon_left: "key-variant"
+                    mode: "fill"
+                    helper_text: "Please enter password"
+                    helper_text_mode: "on_error"
+                    # required: True
+                    password: True
+                    on_text_validate:
+                        self.required = True
+                    on_focus:
+                        self.required = True 
+
+                MDIconButton:
+                    icon: "eye-off"
+                    pos_hint: {"center_y": .5}
+                    pos: text_field.width - self.width + dp(8), 0
+                    theme_text_color: "Hint"
+                    on_release:
+                        self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                        password_field.password = not password_field.password
+        MDFloatLayout:
+            size_hint: .85, .18
+            pos_hint: {'center_x': .5}
+            MDRaisedButton:
+                text: "Login"
+                size_hint: 1, .5
+                radius: [3, ]
+                on_release:
+                    root.login()
+                pos_hint: {"center_x": .5, "center_y": .5}
+                # line_color: "red"
+            
+        MDFloatLayout:
+            size_hint_y: .39
+            MDTextButton:
+                text: "Forget your password"
+                color: 0, 0, 1, 1
+                pos_hint: {"center_x": .5, "center_y": .8}
+                halign: "center"
+        
+            MDTextButton:
+                text: "New User sign up"
+                color: 0, 0, 1, 1
+                pos_hint: {"center_x": .5, "center_y": .6}
+                halign: "center"
+                on_release:
+                    root.manager.transition.direction = "left"
+                    root.manager.current = "regpage"
+        
+        # Widget:
+        #     size_hint_y: .2
+        
