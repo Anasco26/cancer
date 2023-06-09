@@ -1,0 +1,16 @@
+<Spinner>:
+    size_hint: None, None
+    size: dp(100), dp(100)
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    canvas:
+        Color:
+            rgba: 1, .7, 1, 1
+        Line:
+            width: 10
+            circle: (self.center_x, self.center_y, self.width / 2 - 1, root.angle, root.angle - 180)
+
+        Color:
+            rgba: 0, 0, 1, 1  # Flashy blue color (R, G, B, Alpha)
+        Line:
+            width: 10
+            circle: (self.center_x, self.center_y, self.width / 2 - 1, root.angle, root.angle + 180)

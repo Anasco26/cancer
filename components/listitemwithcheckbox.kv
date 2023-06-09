@@ -1,0 +1,17 @@
+#:import LeftCheckbox components.leftcheckbox
+
+<ListItemWithCheckbox>:
+    id: the_list_item
+    markup: True
+    font_style: "Body2"
+    secondary_font_style: "Caption"
+    on_release: 
+        root.show_detail_dialog(self)
+    # IconLeftWidget:
+    #     padding: "5dp", "5dp", "10dp", "5dp"
+    
+
+    LeftCheckbox:
+        id: check
+        on_release: 
+            root.mark(check, the_list_item)
